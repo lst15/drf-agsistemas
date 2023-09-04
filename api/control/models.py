@@ -5,14 +5,14 @@ from vehicle.models import Vehicle
 class Control(models.Model):
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
-    departure_date = models.DateField()
-    departure_time = models.TimeField()
-    departure_km = models.PositiveIntegerField()
-    destination = models.CharField(max_length=200)
-    return_date = models.DateField(null=True, blank=True)
-    return_time = models.TimeField(null=True, blank=True)
-    return_km = models.PositiveIntegerField(null=True, blank=True)
-    distance_traveled = models.PositiveIntegerField(null=True, blank=True)
+    control_departure_date = models.DateField()
+    control_departure_time = models.TimeField()
+    control_departure_km = models.PositiveIntegerField()
+    control_destination = models.CharField(max_length=200)
+    control_return_date = models.DateField(null=True, blank=True)
+    control_return_time = models.TimeField(null=True, blank=True)
+    control_return_km = models.PositiveIntegerField(null=True, blank=True)
+    control_distance_traveled = models.PositiveIntegerField(null=True, blank=True)
     
     class Meta:
       db_table = 'control'
