@@ -9,7 +9,7 @@ class VehicleCreateForm(forms.Form):
         validators=[
             RegexValidator(
                 regex=r'^[A-Z]{3}-\d{4}$',
-                message='Formato de placa inválido. Use o formato AAA-1234.',
+                message='Plate needs to be AAA-1234.',
                 code='invalid_plate'
             )
         ]
@@ -28,4 +28,6 @@ class VehicleCreateForm(forms.Form):
       help_text="Oil needs to be a number",
       min_value=1
     )
-    
+
+class VehicleUpdateOilForm(forms.Form):  
+  oil_change_km = forms.IntegerField(min_value=1)
