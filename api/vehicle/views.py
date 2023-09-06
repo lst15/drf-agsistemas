@@ -47,3 +47,44 @@ class upateOil(APIView):
         "success": True,
         "message": "Vehicle updated successfully",
     })
+
+class fetch(APIView):
+  def get(self,request,vehicle_id):
+    try:
+        vehicle = VehicleModel.objects.get(pk=vehicle_id)
+        #serial = VehicleSerializer(vehicle,many=True)
+    except VehicleModel.DoesNotExist:
+        return Response({"error": "Vehicle not found"}, status=404)
+    
+    data = {
+      "plate":vehicle.vehicle_plate,
+      "brand":vehicle.vehicle_brand,
+      "model":vehicle.vehicle_model,
+      "oil_change_km":vehicle.vehicle_oil_change_km
+    }
+    
+    return Response({"vehicle":data})
+
+class fetchAll(APIView):
+  def get(self, request):
+    vehicles = VehicleModel.objects.all()
+    serializer = VehicleSerializer(vehicles, many=True)
+
+    return Response({
+        "success": True,
+        "results": serializer.data,
+    }, status=200)
+
+class deleteVehicle(APIView):
+  def delete(self, request, vehicle_id):
+    try:
+      vehicle = VehicleModel.objects.get(pk=vehicle_id)
+    except VehicleModel.DoesNotExist:
+        return Response({"error": "Vehicle not found"}, status=404)
+
+    vehicle.delete()
+
+    return Response({
+        "success": True,
+        "message": "Vehicle deleted successfully",
+    })
