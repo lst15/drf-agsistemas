@@ -1,10 +1,10 @@
 from django.db import models
-from driver.models import Driver
+from driver.models import DriverModel
 from vehicle.models import VehicleModel
 
 class Control(models.Model):
     vehicle = models.ForeignKey(VehicleModel, on_delete=models.CASCADE)
-    driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
+    driver = models.ForeignKey(DriverModel, on_delete=models.CASCADE)
     control_departure_date = models.DateField()
     control_departure_time = models.TimeField()
     control_departure_km = models.PositiveIntegerField()

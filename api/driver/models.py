@@ -1,6 +1,6 @@
 from django.db import models
 
-class Driver(models.Model):
+class DriverModel(models.Model):
     driver_name = models.CharField(max_length=200)
     driver_phone = models.CharField(max_length=16)
     driver_license = models.CharField(max_length=20)

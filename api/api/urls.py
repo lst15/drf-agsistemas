@@ -19,4 +19,5 @@ from django.urls import path,include
 
 urlpatterns = [
     path('api/', include('vehicle.urls')),
+    path('api/', include('driver.urls')),
 ]
