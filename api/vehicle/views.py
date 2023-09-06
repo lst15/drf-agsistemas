@@ -51,8 +51,7 @@ class upateOil(APIView):
 class fetch(APIView):
   def get(self,request,vehicle_id):
     try:
-        vehicle = VehicleModel.objects.get(pk=vehicle_id)
-        #serial = VehicleSerializer(vehicle,many=True)
+        vehicle = VehicleModel.objects.get(pk=vehicle_id)        
     except VehicleModel.DoesNotExist:
         return Response({"error": "Vehicle not found"}, status=404)
     
@@ -86,5 +85,5 @@ class deleteVehicle(APIView):
 
     return Response({
         "success": True,
-        "message": "Vehicle deleted successfully",
+        "message": "Driver deleted successfully",
     })
