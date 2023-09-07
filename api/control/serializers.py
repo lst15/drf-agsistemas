@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import Control
+from .models import ControlModel
 
 
 class ControlSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Control
+        model = ControlModel
         fields = '__all__'
