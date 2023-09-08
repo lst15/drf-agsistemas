@@ -16,14 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include,re_path
-from api import views
 
 urlpatterns = [
     path('api/', include('vehicle.urls')),
     path('api/', include('driver.urls')),
     path('api/', include('control.urls')),
-    
-    # Matches any html file
-    re_path(r'^.*\.*', views.pages, name='pages'),    
-    
 ]
